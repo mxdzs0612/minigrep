@@ -98,6 +98,8 @@ impl Config {
     // 使用迭代器优化的新方法
     // 数组索引会越界，为了安全性和简洁性，使用 Iterator 自带的 next 方法是一个更好的选择
     pub fn build_new(
+        // 特质约束，说明 arg 可以是任何实现了 String 迭代器的类型。
+        // 迭代器的所有权已经转移到 build 内，因此可以直接对其进行修改，这里加上了 mut 关键字。
         mut args: impl Iterator<Item = String>,
     ) -> Result<Config, &'static str> {
         // 第一个参数是程序名，由于无需使用，因此这里直接空调用一次

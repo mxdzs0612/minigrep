@@ -5,7 +5,7 @@ fn main() {
     
     // 对 build 返回的 `Result` 进行处理
     // let config = Config::build(&args).unwrap_or_else(|err| {
-    // build 可以直接传入迭代器
+    // env::args 可以直接返回一个迭代器，然后从 build 传入
     let config = Config::build_new(std::env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {err}");
         std::process::exit(1)
